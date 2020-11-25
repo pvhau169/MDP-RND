@@ -18,17 +18,17 @@ for i in range(num_epochs):
     log = alg.runEpoch()
     print("epoch ", i, " get return ", np.round(log.get_current('real_return')))
     
-PATH = 'model_weights/model_mountain_extrinsic_only.pth'
+PATH = 'model_weights/model_mountain.pth'
 torch.save(alg.model.state_dict(), PATH)
 
 Y = np.asarray(log.get_log('real_return'))
 
-log_PATH = 'log/real_return_mountain_extrinsic_only.txt'
+log_PATH = 'log/real_return.txt'
 np.savetxt(log_PATH, Y)
 
 Y = np.asarray(log.get_log('combined_return'))
 
-log_PATH = 'log/combined_return_mountain_extrinsic_only.txt'
+log_PATH = 'log/combined_return.txt'
 np.savetxt(log_PATH, Y)
 
 observations = env.reset()
